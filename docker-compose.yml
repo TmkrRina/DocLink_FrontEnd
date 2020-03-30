@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "3000:80"
+    environment:
+      - NGINX_HOST=doclink.me
+      - NGINX_PORT=80
+    volumes:
+      - ./doclink.template:/etc/nginx/conf.d/mysite.template
+      - ./dist:/app
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+
+
