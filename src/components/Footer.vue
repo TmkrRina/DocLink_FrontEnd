@@ -1,15 +1,37 @@
 <template>
   <footer class="footer">
-    <div class="container">
+    <Container>
       <div class="row">
-        <div class="columns five">This is the footer and then we should be happy with each other</div>
+        <div class="columns five">
+          <span class="copyright">&copy; {{year}} {{appName}}</span>
+        </div>
       </div>
-    </div>
+    </Container>
   </footer>
 </template>
 
 <script>
+import Container from './Container'
 export default {
-  name: "Footer"
+  name: "Footer",
+  props: ['appName'],
+  data: function() {
+    return {
+      year: (new Date()).getFullYear(),
+    }
+  },
+  components: { Container }
 };
 </script>
+
+<style scoped>
+.footer {
+  height: 50px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+.copyright {
+  color: white;
+}
+</style>

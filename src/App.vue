@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-bind:appName="appName" />
     <router-view />
-    <Footer />
+    <Footer v-bind:appName="appName" />
   </div>
 </template>
 
@@ -12,6 +12,11 @@ import Footer from "./components/Footer";
 
 export default {
   name: "App",
+  data: function() {
+    return {
+      appName: 'DocLink'
+    }
+  },
   components: {
     Header,
     Footer
@@ -20,6 +25,9 @@ export default {
 </script>
 
 <style scoped>
+.app {
+  background-color: whitesmoke;
+  }
 </style>
 
 

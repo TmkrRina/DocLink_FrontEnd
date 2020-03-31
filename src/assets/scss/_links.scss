@@ -1,0 +1,16 @@
+.nav-link {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: unset;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  &.dock-right {
+    justify-content: self-end;
+  }
+}

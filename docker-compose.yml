@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  web_1:
+  web:
     build: .
     volumes:
       - .:/app
@@ -22,7 +22,7 @@ services:
     networks: 
       - frontend
     depends_on: 
-      - web_1
+      - web
 
 networks:
   frontend:

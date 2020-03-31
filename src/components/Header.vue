@@ -1,27 +1,31 @@
 <template>
   <header class="header">
-    <div class="container">
+    <Container>
       <div class="row">
         <div class="columns two">
-          <router-link to="/" class="button">DocLink</router-link>
+          <router-link to="/">{{appName}}</router-link>
         </div>
         <div class="columns six">
           <router-link to="/login" class="button">Login</router-link>
         </div>
       </div>
-    </div>
+    </Container>
   </header>
 </template>
 
 <script>
+import Container from "./Container"
 export default {
-  name: "Header"
+  name: "Header",
+  props: ['appName'],
+
+  components: { Container }
 };
 </script>
 
 <style scoped>
 .header {
-  background-color: gray;
+  background-color: white;
   height: 90px;
   display: flex;
   align-items: center;
