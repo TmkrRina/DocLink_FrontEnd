@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
-    <HelloWorld msg="Welcome to DocLink"/>
-  </div>
+      <div id="app">
+        <p>
+            <router-link to="/">Home</router-link>
+            <router-link to="/login">Login</router-link>
+        </p>
+          <router-view/>
+      </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
