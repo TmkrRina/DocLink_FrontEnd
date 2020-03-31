@@ -14,8 +14,8 @@ export default {
   name: "App",
   data: function() {
     return {
-      appName: 'DocLink'
-    }
+      appName: "DocLink"
+    };
   },
   components: {
     Header,
@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .app {
   background-color: whitesmoke;
-  }
+}
 </style>
 
 

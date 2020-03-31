@@ -1,7 +1,48 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-   </div>
+  <div class="body">
+  <div class="row">
+  <div class="four columns"></div>
+    <div class="ten columns">
+<form>
+  <div class="row">
+    <div class="six columns">
+      <label for="exampleEmailInput">Your email</label>
+      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
+    </div>
+
+    <!-- <div class="six columns">
+      <label for="exampleRecipientInput">Reason for contacting</label>
+      <select class="u-full-width" id="exampleRecipientInput">
+        <option value="Option 1">Questions</option>
+        <option value="Option 2">Admiration</option>
+        <option value="Option 3">Can I get your number?</option>
+      </select>
+    </div> -->
+
+  </div>
+  <div class="row">
+  <div class="six columns">
+  <label for="exampleEmailInput">Your password</label>
+  <input class="u-full-width" type="password" placeholder="******" id="exampleEmailInput">
+  </div>
+</div>
+
+  
+  <!-- <label for="exampleMessage">Message</label>
+  <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+  <label class="example-send-yourself-copy">
+    <input type="checkbox">
+    <span class="label-body">Send a copy to yourself</span>
+  </label> -->
+  <input class="button-primary" type="submit" value="Login">
+</form>
+<!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
+</div>
+    <div class="two columns"></div>
+   
+
+  </div>
+  </div>
 </template>
 
 <script>
@@ -29,4 +70,9 @@ li {
 a {
   color: #42b983;
 }
+
+.body{
+  background-color: #cbd2d7;
+}
+
 </style>
