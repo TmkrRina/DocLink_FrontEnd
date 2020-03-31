@@ -1,7 +1,7 @@
 server {
-    root /app;
+    root /app/dist;
 
     location /#/ {
-        root /app;
+        root /app/dist;
     }
 }
