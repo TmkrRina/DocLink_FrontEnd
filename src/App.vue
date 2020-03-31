@@ -1,18 +1,25 @@
 <template>
-      <div id="app">
-        <p>
-            <router-link to="/">Home</router-link>
-            <router-link to="/login">Login</router-link>
-        </p>
-          <router-view/>
-      </div>
+  <div id="app">
+    <Header />
+    <router-view />
+    <Footer />
+  </div>
 </template>
 
 <script>
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default {
-  name: 'App',
-}
+  name: "App",
+  components: {
+    Header,
+    Footer
+  }
+};
 </script>
+
+<style scoped>
+</style>
 
 
