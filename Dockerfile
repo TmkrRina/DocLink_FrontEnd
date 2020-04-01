@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm install -g @vue/cli
+RUN yarn global add @vue/cli
 
 RUN yarn install
 

@@ -1,72 +1,52 @@
 <template>
-  <div class="body">
-  <div class="row">
-  <div class="four columns"></div>
-    <div class="ten columns">
-<form>
-  <div class="row">
-    <div class="six columns">
-      <label for="exampleEmailInput">Your email</label>
-      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput" />
+  <VerticalHeight>
+    <div class="login">
+      <Container>
+        <div class="row">
+          <div class="ten columns">
+            <div class="login-form-wrapper">
+              <LoginForm />
+            </div>
+          </div>
+        </div>
+      </Container>
     </div>
-
-    <!-- <div class="six columns">
-      <label for="exampleRecipientInput">Reason for contacting</label>
-      <select class="u-full-width" id="exampleRecipientInput">
-        <option value="Option 1">Questions</option>
-        <option value="Option 2">Admiration</option>
-        <option value="Option 3">Can I get your number?</option>
-      </select>
-    </div> -->
-
-  </div>
-  <div class="row">
-  <div class="six columns">
-  <label for="exampleEmailInput">Your password</label>
-  <input class="u-full-width" type="password" placeholder="******" id="exampleEmailInput">
-  </div>
-</div>
-
-
-  <input class="button-primary" type="submit" value="Login">
-</form>
-<!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
-</div>
-    <div class="two columns"></div>
-   
-
-  </div>
-  </div>
+  </VerticalHeight>
 </template>
 
 <script>
+import Container from "./Container";
+import VerticalHeight from "./VerticalHeight";
+import LoginForm from "./Form/LoginForm";
+
 export default {
-  name: 'Login',
+  name: "Login",
   props: {
     msg: String
-  }
-}
+  },
+  components: { Container, VerticalHeight, LoginForm }
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+.login {
+  display: flex;
+  // padding-top: 100px;
+  box-sizing: border-box;
+  // background-color: rgba(0,0,0,0.5);
+  background-color: #e1e9eb;
+  height: 100%;
+  align-items: center;
+  position: relative;
 
-.body{
-  background-color: #cbd2d7;
+  &:before {
+    position:absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
 }
-
 </style>

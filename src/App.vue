@@ -1,20 +1,33 @@
 <template>
-      <div id="app">
-        <p>
-            <router-link to="/">Home</router-link>
-            <router-link to="/login">Login</router-link>
-            <router-link to="/register">Register</router-link>
-                        
-        </p>
-          <router-view/>
-      </div>
+  <div id="app">
+    <Header v-bind:appName="appName" />
+    <router-view />
+    <Footer v-bind:appName="appName" />
+  </div>
 </template>
 
 <script>
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default {
-  name: 'App',
-}
+  name: "App",
+  data: function() {
+    return {
+      appName: "DocLink"
+    };
+  },
+  components: {
+    Header,
+    Footer
+  }
+};
 </script>
+
+<style scoped>
+.app {
+  background-color: whitesmoke;
+}
+</style>
 
 
