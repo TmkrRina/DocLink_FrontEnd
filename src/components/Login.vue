@@ -27,13 +27,7 @@
   </div>
 </div>
 
-  
-  <!-- <label for="exampleMessage">Message</label>
-  <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
-  <label class="example-send-yourself-copy">
-    <input type="checkbox">
-    <span class="label-body">Send a copy to yourself</span>
-  </label> -->
+
   <input class="button-primary" type="submit" value="Login">
 </form>
 <!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
