@@ -27,11 +27,11 @@ export default {
 <style scoped>
 .footer {
   height: 50px;
-  background-color: black;
+  background-color: #efe6d6;
   display: flex;
   align-items: center;
 }
 .copyright {
-  color: white;
+  color: black;
 }
 </style>

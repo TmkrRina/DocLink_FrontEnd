@@ -1,32 +1,36 @@
 <template>
-  <div class="banner">
-    <Container>
-      <div class="row">
-        <div class="columns twelve">
-          <BannerAnnouncement />
+  <VerticalHeight>
+    <div class="banner">
+      <Container>
+        <div class="row">
+          <div class="columns twelve">
+            <BannerAnnouncement />
+          </div>
         </div>
-      </div>
-    </Container>
-  </div>
+      </Container>
+    </div>
+  </VerticalHeight>
 </template>
 
 <script>
 import Container from "./Container";
 import BannerAnnouncement from "./BannerAnnouncement";
+import VerticalHeight from "./VerticalHeight";
 
 export default {
   name: "Banner",
   components: {
     Container,
-    BannerAnnouncement
+    BannerAnnouncement,
+    VerticalHeight
   }
 };
 </script>
 
 <style scoped>
 .banner {
-  height: calc(100vh - (140px));
-  background-color: white;
+  height: 100%;
+  background-color: #a98c6a;
   display: flex;
   align-items: center;
   position: relative;
@@ -39,6 +43,6 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: #a98c6a;
 }
 </style>
