@@ -10,10 +10,11 @@
         <mdb-col md="4">
           <img alt="Error 404" class="img-fluid" src="https://mdbootstrap.com/img/Others/grafika404-bf.png"/>
         </mdb-col>
-      </mdb-row>
-    </div>
-  </section>
+</mdb-row>
+</div>
+</section>
 </template>
+
 
 <script>
 import { mdbRow, mdbCol } from 'mdbvue'

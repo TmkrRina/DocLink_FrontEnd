@@ -1,6 +1,4 @@
-<template>
-  <section id="dashboard">
-    <mdb-card class="mb-4">
+    <!-- <mdb-card class="mb-4">
       <mdb-card-body class="d-sm-flex justify-content-between">
         <h4 class="mb-sm-0 pt-2">
           <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a><span>/</span><span>Dashboard</span>
@@ -10,8 +8,8 @@
           <mdb-btn color="primary" size="sm" class="my-0" type="submit"><i class="fa fa-search"></i></mdb-btn>
         </form>
       </mdb-card-body>
-    </mdb-card>
-    <section class="mt-lg-5">
+    </mdb-card> -->
+    <!-- <section class="mt-lg-5">
       <mdb-row>
         <mdb-col xl="3" md="6" class="mb-r">
           <mdb-card cascade class="cascading-admin-card">
@@ -94,8 +92,8 @@
           </mdb-card>
         </mdb-col>
       </mdb-row>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <mdb-row class="mt-5">
           <mdb-col md="9" class="mb-4">
               <mdb-card>
@@ -142,8 +140,8 @@
               </mdb-card>
           </mdb-col>
       </mdb-row>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <mdb-row>
           <mdb-col md="6" class="mb-4">
               <mdb-card>
@@ -218,8 +216,8 @@
               </mdb-card>
           </mdb-col>
       </mdb-row>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <mdb-row class="mt-3">
         <mdb-col md="12" lg="4" class="mb-4">
           <mdb-card class="mb-4">
@@ -252,8 +250,8 @@
           </mdb-card>
         </mdb-col>
       </mdb-row>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <mdb-row>
         <mdb-col lg="6" class="mb-4">
           <mdb-card>
@@ -460,8 +458,8 @@
           </mdb-card>
         </mdb-col>
       </mdb-row>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <mdb-row>
         <mdb-col xl="3" md="6" class="mb-3">
           <mdb-card class="classic-admin-card primary-color">
@@ -532,40 +530,63 @@
           </mdb-card>
         </mdb-col>
       </mdb-row>
-    </section>
-  </section>
+    </section> -->
+<template>
+  <section id="dashboard"></section>
 </template>
 
 <script>
-import { mdbRow, mdbCol, mdbBtn, mdbCard, mdbCardBody, mdbCardHeader, mdbCardText, mdbIcon, mdbTbl, mdbBarChart, mdbPieChart, mdbLineChart, mdbRadarChart, mdbDoughnutChart, mdbListGroup, mdbListGroupItem, mdbBadge, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter } from 'mdbvue'
+import {
+  // mdbRow,
+  // mdbCol,
+  // mdbBtn,
+  // mdbCard,
+  // mdbCardBody,
+  // mdbCardHeader,
+  // /* mdbCardText, */ mdbIcon,
+  // mdbTbl,
+  // mdbBarChart,
+  // mdbPieChart,
+  // mdbLineChart,
+  // mdbRadarChart,
+  // mdbDoughnutChart,
+  // mdbListGroup,
+  // mdbListGroupItem,
+  // mdbBadge,
+  // mdbModal,
+  // mdbModalHeader,
+  // mdbModalTitle,
+  // mdbModalBody,
+  // mdbModalFooter
+} from "mdbvue";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   components: {
-    mdbRow,
-    mdbCol,
-    mdbBtn,
-    mdbCard,
-    mdbCardBody,
-    mdbCardHeader,
-    mdbCardText,
-    mdbIcon,
-    mdbTbl,
-    mdbBarChart,
-    mdbPieChart,
-    mdbLineChart,
-    mdbRadarChart,
-    mdbDoughnutChart,
-    mdbListGroup,
-    mdbListGroupItem,
-    mdbBadge,
-    mdbModal,
-    mdbModalHeader,
-    mdbModalTitle,
-    mdbModalBody,
-    mdbModalFooter
+    // mdbRow,
+    // mdbCol,
+    // mdbBtn,
+    // mdbCard,
+    // mdbCardBody,
+    // mdbCardHeader,
+    // // mdbCardText,
+    // mdbIcon,
+    // mdbTbl,
+    // mdbBarChart,
+    // mdbPieChart,
+    // mdbLineChart,
+    // mdbRadarChart,
+    // mdbDoughnutChart,
+    // mdbListGroup,
+    // mdbListGroupItem,
+    // mdbBadge,
+    // mdbModal,
+    // mdbModalHeader,
+    // mdbModalTitle,
+    // mdbModalBody,
+    // mdbModalFooter
   },
-  data () {
+  data() {
     return {
       showFrameModalTop: false,
       showFrameModalBottom: false,
@@ -582,22 +603,24 @@ export default {
       showFluidModalTop: false,
       showFluidModalBottom: false,
       barChartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
-            label: '#1',
+            label: "#1",
             data: [12, 39, 3, 50, 2, 32, 84],
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
+            backgroundColor: "rgba(245, 74, 85, 0.5)",
             borderWidth: 1
-          }, {
-            label: '#2',
+          },
+          {
+            label: "#2",
             data: [56, 24, 5, 16, 45, 24, 8],
-            backgroundColor: 'rgba(90, 173, 246, 0.5)',
+            backgroundColor: "rgba(90, 173, 246, 0.5)",
             borderWidth: 1
-          }, {
-            label: '#3',
+          },
+          {
+            label: "#3",
             data: [12, 25, 54, 3, 15, 44, 3],
-            backgroundColor: 'rgba(245, 192, 50, 0.5)',
+            backgroundColor: "rgba(245, 192, 50, 0.5)",
             borderWidth: 1
           }
         ]
@@ -606,31 +629,49 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          xAxes: [{
-            barPercentage: 1,
-            gridLines: {
-              display: true,
-              color: 'rgba(0, 0, 0, 0.1)'
+          xAxes: [
+            {
+              barPercentage: 1,
+              gridLines: {
+                display: true,
+                color: "rgba(0, 0, 0, 0.1)"
+              }
             }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: true,
-              color: 'rgba(0, 0, 0, 0.1)'
-            },
-            ticks: {
-              beginAtZero: true
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: "rgba(0, 0, 0, 0.1)"
+              },
+              ticks: {
+                beginAtZero: true
+              }
             }
-          }]
+          ]
         }
       },
       pieChartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
             data: [300, 50, 100, 40, 120, 24, 52],
-            backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
-            hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
+            backgroundColor: [
+              "#F7464A",
+              "#46BFBD",
+              "#FDB45C",
+              "#949FB1",
+              "#4D5360",
+              "#ac64ad"
+            ],
+            hoverBackgroundColor: [
+              "#FF5A5E",
+              "#5AD3D1",
+              "#FFC870",
+              "#A8B3C5",
+              "#616774",
+              "#da92db"
+            ]
           }
         ]
       },
@@ -639,21 +680,21 @@ export default {
         maintainAspectRatio: false
       },
       lineChartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
-            label: '#1',
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
+            label: "#1",
+            backgroundColor: "rgba(245, 74, 85, 0.5)",
             data: [65, 59, 80, 81, 56, 55, 40]
           },
           {
-            label: '#2',
-            backgroundColor: 'rgba(90, 173, 246, 0.5)',
+            label: "#2",
+            backgroundColor: "rgba(90, 173, 246, 0.5)",
             data: [12, 42, 121, 56, 24, 12, 2]
           },
           {
-            label: '#3',
-            backgroundColor: 'rgba(245, 192, 50, 0.5)',
+            label: "#3",
+            backgroundColor: "rgba(245, 192, 50, 0.5)",
             data: [2, 123, 154, 76, 54, 23, 5]
           }
         ]
@@ -662,36 +703,40 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          xAxes: [{
-            gridLines: {
-              display: true,
-              color: 'rgba(0, 0, 0, 0.1)'
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: "rgba(0, 0, 0, 0.1)"
+              }
             }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: true,
-              color: 'rgba(0, 0, 0, 0.1)'
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: "rgba(0, 0, 0, 0.1)"
+              }
             }
-          }]
+          ]
         }
       },
       radarChartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
-            label: '#1',
-            backgroundColor: 'rgba(245, 74, 85, 0.5)',
+            label: "#1",
+            backgroundColor: "rgba(245, 74, 85, 0.5)",
             data: [65, 59, 80, 81, 56, 55, 40]
           },
           {
-            label: '#2',
-            backgroundColor: 'rgba(90, 173, 246, 0.5)',
+            label: "#2",
+            backgroundColor: "rgba(90, 173, 246, 0.5)",
             data: [12, 42, 121, 56, 24, 12, 2]
           },
           {
-            label: '#3',
-            backgroundColor: 'rgba(245, 192, 50, 0.5)',
+            label: "#3",
+            backgroundColor: "rgba(245, 192, 50, 0.5)",
             data: [2, 123, 154, 76, 54, 23, 5]
           }
         ]
@@ -701,12 +746,24 @@ export default {
         maintainAspectRatio: false
       },
       doughnutChartData: {
-        labels: ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'],
+        labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
         datasets: [
           {
             data: [300, 50, 100, 40, 120],
-            backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-            hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774']
+            backgroundColor: [
+              "#F7464A",
+              "#46BFBD",
+              "#FDB45C",
+              "#949FB1",
+              "#4D5360"
+            ],
+            hoverBackgroundColor: [
+              "#FF5A5E",
+              "#5AD3D1",
+              "#FFC870",
+              "#A8B3C5",
+              "#616774"
+            ]
           }
         ]
       },
@@ -714,9 +771,9 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
-    }
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
