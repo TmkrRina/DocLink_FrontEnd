@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {REGISTRATION_URL, LOGIN_URL} from './constants';
+import { LOGIN_URL } from './constants';
 
 
 Vue.use(Vuex)
@@ -9,44 +9,70 @@ export default new Vuex.Store({
   state: {
     auth: {
       loggedIn: false,
-      token: null
+      token: null,
+      user: null
     }
   },
   mutations: {
-    checkLogged: function() {
-      console.log('Checking if user is logged in....');
-      let token = window.localStorage.getItem('token');
-      if(token) {
-        this.state.token = token;
-        this.state.loggedIn = true;
-      } else {
-        this.state.token = null;
-        this.state.loggedIn = false;
+    reLogin(state, userDetails) {
+      state.auth.token = userDetails.token;
+      state.auth.loggedIn = true;
+      state.auth.user = JSON.parse(userDetails.user);
+
+      console.log(state);
+    },
+    login(state, loginDetails) {
+      localStorage.setItem("token", loginDetails.token);
+      localStorage.setItem("user", JSON.stringify(loginDetails.user));
+      state.token = loginDetails.token;
+      state.user = loginDetails.user;
+    },
+    logout: function (state) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      state.auth = {
+        loggedIn: false,
+        token: null,
+        user: null
       }
-    },
-    login: function(userDetails) {
-      fetch(LOGIN_URL, {
-        method: "POST",
-        body: userDetails,
-        headers: {
-          "Content_Type": "application/json"
-        }
-      }).then((res) => {
-        console.log(res);
-      })
-    },
-    register: function(details) {
-      fetch(REGISTRATION_URL, {
-        method: "post",
-        body: details,
-        headers: {
-          "Content_Type": "application/json"
-        }
-      }).then(res => {
-        console.log(res);
-      })
+    }
+  },
+  getters: {
+    auth: function (state) {
+      return state.auth.loggedIn;
     }
   },
   actions: {
+    checkLogin({ commit }) {
+      console.log('Checking if user is logged in....');
+      let token = window.localStorage.getItem('token');
+      let user = window.localStorage.getItem('user');
+      commit('reLogin', { token, user });
+    },
+
+    async login({ commit }, credentials) {
+      console.log(credentials);
+      await fetch(LOGIN_URL, {
+        method: "POST",
+        body: JSON.stringify(credentials),
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+          commit("login", res);
+          // context.$router.push("/dashboard");
+        })
+        .catch(() => {
+          // console.log();
+          // context.error = res.subErrors;
+        });
+    },
+
+    logout({commit}) {
+      commit('logout');
+    }
   }
 })

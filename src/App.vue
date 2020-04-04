@@ -23,8 +23,7 @@ export default {
     Footer
   },
   beforeCreate: function() {
-    // console.log(this.$store);
-    this.$store.commit('checkLogged');
+    this.$store.dispatch('checkLogin');
   }
 };
 </script>

@@ -5,63 +5,65 @@
         <div class="row">
           <div class="ten columns">
             <form v-on:submit.prevent="submit">
-              <input type="hidden" name="userRole" value="ROLE_DOCTOR" />
+
               <div class="row">
                 <h2>Register</h2>
               </div>
               <div class="row">
                 <div class="three columns">
-                  <label for="exampleEmailInput">Firstname</label>
-                  <input class="u-full-width" type="email" placeholder id="exampleEmailInput" />
+                  <label for="firstName">Firstname</label>
+                  <input class="u-full-width" v-model="firstName" type="text" id="firstName" />
                 </div>
                 <div class="three columns">
-                  <label for="exampleEmailInput">Lastname</label>
-                  <input class="u-full-width" type="email" placeholder id="exampleEmailInput" />
+                  <label for="lastName">Lastname</label>
+                  <input class="u-full-width" type="text" v-model="lastName" id="lastName" />
                 </div>
               </div>
               <div class="row">
                 <div class="six columns">
-                  <label for="exampleEmailInput">Your email</label>
+                  <label for="email">Your email</label>
                   <input
                     class="u-full-width"
                     type="email"
                     placeholder="test@mailbox.com"
-                    id="exampleEmailInput"
+                    id="email"
+                    v-model="email"
                   />
                 </div>
               </div>
               <div class="row">
                 <div class="six columns">
-                  <label for="exampleEmailInput">Your password</label>
+                  <label for="password">Your password</label>
                   <input
                     class="u-full-width"
                     type="password"
                     placeholder="******"
-                    id="exampleEmailInput"
+                    id="password"
+                    v-model="password"
                   />
                 </div>
               </div>
 
               <div class="row">
                 <div class="six columns">
-                  <label for="roleInput">Country</label>
-                  <select class="u-full-width" id="roleInput">
-                    <option value="Option 1">USA</option>
-                    <option value="Option 2">Australia</option>
-                    <option value="Option 2">Ethiopia</option>
-                    <option value="Option 2">Nigeria</option>
-                    <option value="Option 2">Nepal</option>
+                  <label for="country">Country</label>
+                  <select v-model="country" class="u-full-width" id="country">
+                    <option value="USA">USA</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Nepal">Nepal</option>
                   </select>
                 </div>
               </div>
 
               <div class="row">
                 <div class="six columns">
-                  <label for="roleInput">State</label>
-                  <select class="u-full-width" id="roleInput">
-                    <option value="Option 1">Iowa</option>
-                    <option value="Option 2">California</option>
-                    <option value="Option 2">New York</option>
+                  <label for="state">State</label>
+                  <select class="u-full-width" id="state" v-model="state">
+                    <option value="Iowa">Iowa</option>
+                    <option value="Califonia">California</option>
+                    <option value="New York">New York</option>
                   </select>
                 </div>
               </div>
@@ -76,8 +78,9 @@
 </template>
 
 <script>
-import Container from "./Container";
-import VerticalHeight from "./VerticalHeight";
+import Container from "../Container";
+import VerticalHeight from "../VerticalHeight";
+import { REGISTRATION_URL } from '../../constants';
 
 export default {
   components: { Container, VerticalHeight },
@@ -93,11 +96,35 @@ export default {
       state: null,
       email: null,
       password: null,
+      userRole: "ROLE_PATIENT"
     }
   },
   methods: {
     submit: function() {
-      
+      const details = JSON.stringify({
+        email: this.email,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        country: this.country,
+        state: this.state,
+        userRole: this.userRole
+      });
+
+      const context = this;
+
+      fetch(REGISTRATION_URL, {
+        method: "post",
+        body: details,
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(res => res.json())
+      .then(response => {
+        console.log(response);
+        context.$router.push({path: '/login'});
+      }).catch(() => false)
     }
   }
 };

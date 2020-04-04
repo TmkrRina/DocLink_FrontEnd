@@ -11,11 +11,11 @@
               <div class="row">
                 <div class="six columns">
                   <label for="exampleEmailInput">Firstname</label>
-                  <input class="u-full-width" type="email" placeholder id="exampleEmailInput" />
+                  <input class="u-full-width" v-model="firstName" type="text" />
                 </div>
                 <div class="six columns">
                   <label for="exampleEmailInput">Lastname</label>
-                  <input class="u-full-width" type="email" placeholder id="exampleEmailInput" />
+                  <input class="u-full-width" v-model="lastName" type="text"  />
                 </div>
               </div>
               <div class="row">
@@ -26,6 +26,7 @@
                     type="email"
                     placeholder="test@mailbox.com"
                     id="exampleEmailInput"
+                    v-model="email"
                   />
                 </div>
               </div>
@@ -54,7 +55,7 @@
                   placeholder="General, Oncologist"
                   id="exampleMessage"
                 ></textarea>
-              </div> -->
+              </div>-->
 
               <div class="row">
                 <div class="six columns">
@@ -88,8 +89,8 @@
 </template>
 
 <script>
-import Container from "./Container";
-import VerticalHeight from "./VerticalHeight";
+import Container from "../Container";
+import VerticalHeight from "../VerticalHeight";
 
 export default {
   components: { Container, VerticalHeight },
@@ -105,20 +106,22 @@ export default {
       state: null,
       email: null,
       password: null,
-      userRole: "ROLE_DOCTOR"
-    }
+      userRole: "ROLE_DOCTOR",
+      experience: null
+    };
   },
   methods: {
     submit: function() {
-      this.$store.commit('reigster', {
+      this.$store.commit("reigster", JSON.stringify({
         email: this.email,
         password: this.password,
         firstName: this.firstName,
         lastName: this.lastName,
         country: this.country,
         state: this.state,
-        userRole: this.userRole
-      });
+        userRole: this.userRole,
+        experience: this.experience
+      }));
     }
   }
 };

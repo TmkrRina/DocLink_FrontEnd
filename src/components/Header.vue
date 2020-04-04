@@ -7,9 +7,10 @@
         </div>
         <div class="columns ten">
           <div class="nav-links dock-right">
-            <router-link to="/login" class="nav-link button">Login</router-link>
-            <router-link to="/register" class="nav-link button">Register</router-link>
-            <router-link to="/dashboard" class="nav-link button">Dashboard</router-link>
+            <router-link v-show="!loggedIn" to="/login" class="nav-link button">Login</router-link>
+            <router-link v-show="!loggedIn" to="/register" class="nav-link button">Register</router-link>
+            <router-link v-show="loggedIn" to="/dashboard" class="nav-link button">Dashboard</router-link>
+            <Logout v-show="loggedIn" />
           </div>
         </div>
       </div>
@@ -19,11 +20,36 @@
 
 <script>
 import Container from "./Container";
+import Logout from "./Logout";
+
 export default {
   name: "Header",
   props: ["appName"],
+  data: function() {
+    return {
+      // loggedIn: false
+    }
+  },
 
-  components: { Container }
+  methods: {
+    loggedIn: function() {
+      return this.$store.getters.auth.loggedIn;
+    }
+  },
+
+  watch: {
+    loggedIn(newVal) {
+      console.log("State changed");
+      return newVal;
+    }
+  },
+
+  beforeMount: function() {
+    this.loggedIn = this.$store.state.auth.loggedIn;
+  },
+
+
+  components: { Container, Logout }
 };
 </script>
 
