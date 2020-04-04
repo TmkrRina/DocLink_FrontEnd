@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log(this.email, "this is the email I saved");
+      this.$store.commit('login', {emai: this.email, password: this.password});
     },
     onChange: function(event) {
       this[event.target.name] = event.target.value;

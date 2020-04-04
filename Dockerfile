@@ -10,4 +10,4 @@ RUN yarn global add @vue/cli
 
 RUN yarn install
 
-ENTRYPOINT [ "yarn", "build" ]
+ENTRYPOINT [ "yarn", "build", "--watch" ]
