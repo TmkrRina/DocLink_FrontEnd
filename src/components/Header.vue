@@ -9,6 +9,7 @@
           <div class="nav-links dock-right">
             <router-link to="/login" class="nav-link button">Login</router-link>
             <router-link to="/register" class="nav-link button">Register</router-link>
+            <router-link to="/dashboard" class="nav-link button">Dashboard</router-link>
           </div>
         </div>
       </div>

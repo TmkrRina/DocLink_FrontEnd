@@ -12,22 +12,48 @@
               <strong>Alice Mayer</strong>
             </mdb-card-title>
             <h5 class="indigo-text">
-              <strong>Photographer</strong>
+              <strong>Psychologist </strong>
             </h5>
-            <h6 class="text-justify">
-              <strong>About:</strong>
-            </h6>
-            <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione perferendis quod animi dignissimos consectetur quibusdam numquam laboriosam, minus, provident...</p>
-            <div class="text-right">
-              <mdb-btn outline="primary" rounded size="sm">More...</mdb-btn>
-            </div>
+          
           </mdb-card-body>
         </mdb-card>
       </mdb-col>
-      <mdb-col md="9">
+      <mdb-col md="5">
+        <form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Firstname</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    <label for="exampleFormControlInput1">Lastname</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    <label for="exampleFormControlInput1">Age</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    <label for="exampleFormControlInput1">Gender</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Male">
+    <label for="exampleFormControlInput1">Specialization</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Experience</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Country</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Nepal</option>
+      <option>USA</option>
+      <option>Ethiopia</option>
+      <option>Nigeria</option>
+      <option>Krosova</option>
+    </select>
+    <button type="button" class="btn btn-primary">Edit Details</button>
+  </div>
+        </form>
+      </mdb-col>
+
+      <!-- <mdb-col md="9">
         <section class="text-center pb-3">
-          <mdb-row class="d-flex justify-content-center">
-            <mdb-col lg="6" xl="5" class="mb-3">
+          <mdb-row class="d-flex justify-content-center"> --> 
+           <!-- <mdb-col lg="6" xl="5" class="mb-3">
               <mdb-card cascade narrow class="d-flex mb-5">
                 <mdb-view>
                   <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-profile-page.jpg" alt="Project" class="img-fluid"/>
@@ -40,7 +66,7 @@
                   <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
                 </mdb-card-body>
                 <mdb-card-footer class="links-light profile-card-footer">
-                  <span class="right">
+                  <span cla ss="right">
                     <a class="p-2" href="#profile">
                       Live Preview
                       <mdb-icon icon="photo" class="ml-1"/>
@@ -48,8 +74,8 @@
                   </span>
                 </mdb-card-footer>
               </mdb-card>
-            </mdb-col>
-            <mdb-col lg="6" xl="5" class="mb-3">
+            </mdb-col> -->
+            <!-- <mdb-col lg="6" xl="5" class="mb-3">
               <mdb-card cascade narrow class="d-flex mb-5">
                 <mdb-view>
                   <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-signup.jpg" alt="Project" class="img-fluid"/>
@@ -70,11 +96,11 @@
                   </span>
                 </mdb-card-footer>
               </mdb-card>
-            </mdb-col>
-          </mdb-row>
-          <mdb-row class="d-flex justify-content-center">
-            <mdb-col lg="6" xl="5" class="mb-3">
-              <mdb-card cascade narrow class="d-flex mb-5">
+            </mdb-col> -->
+          <!-- </mdb-row>
+          <mdb-row class="d-flex justify-content-center"> -->
+            <!-- <mdb-col lg="6" xl="5" class="mb-3"> -->
+              <!-- <mdb-card cascade narrow class="d-flex mb-5">
                 <mdb-view>
                   <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-pricing.jpg" alt="Project" class="img-fluid"/>
                   <mask overlay="white-slight" waves/>
@@ -93,9 +119,9 @@
                     </a>
                   </span>
                 </mdb-card-footer>
-              </mdb-card>
-            </mdb-col>
-            <mdb-col lg="6" xl="5" class="mb-3">
+              </mdb-card> -->
+            <!-- </mdb-col> -->
+            <!-- <mdb-col lg="6" xl="5" class="mb-3">
               <mdb-card cascade narrow class="d-flex mb-5">
                 <mdb-view>
                   <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-landing.jpg" alt="Project" class="img-fluid"/>
@@ -116,8 +142,8 @@
                   </span>
                 </mdb-card-footer>
               </mdb-card>
-            </mdb-col>
-            <mdb-col lg="12">
+            </mdb-col> -->
+            <!-- <mdb-col lg="12">
               <div class="text-center">
                 <mdb-pagination circle color="blue">
                   <mdb-page-item disabled>First</mdb-page-item>
@@ -131,16 +157,16 @@
                   <mdb-page-item disabled>Last</mdb-page-item>
                 </mdb-pagination>
               </div>
-            </mdb-col>
-          </mdb-row>
-        </section>
-      </mdb-col>
+            </mdb-col> -->
+          <!-- </mdb-row>
+        </section> -->
+      <!-- </mdb-col> -->
     </mdb-row>
   </section>
 </template>
 
 <script>
-import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbView, mdbMask, mdbCardTitle, mdbCardText, mdbCardFooter, mdbIcon, mdbBtn, mdbPagination, mdbPageNav, mdbPageItem } from 'mdbvue'
+import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbView, mdbMask, mdbCardTitle} from 'mdbvue'
 
 export default {
   name: 'Profile',
@@ -152,13 +178,13 @@ export default {
     mdbView,
     mdbMask,
     mdbCardTitle,
-    mdbCardText,
-    mdbCardFooter,
-    mdbIcon,
-    mdbBtn,
-    mdbPagination,
-    mdbPageNav,
-    mdbPageItem
+    // mdbCardText,
+    // mdbCardFooter,
+    // mdbIcon,
+    // mdbBtn,
+    // mdbPagination,
+    // mdbPageNav,
+    // mdbPageItem
   },
   data () {
     return {
