@@ -4,7 +4,7 @@
     <div class="row">
       <div class="six columns">
         <label for="email">Email</label>
-        <TextInput name="email" v-bind:email="email" v-bind:onChange="onChange" />
+        <TextInput required name="email" v-bind:email="email" v-bind:onChange="onChange" />
       </div>
     </div>
     <div class="row">
@@ -28,12 +28,29 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
+    error: function() {
+      if(!this.error) return this.error;
+      if(Array.isArray(this.error)) {
+        const errorText = this.error.reduce((acc, item) => {
+          acc += item;
+          return acc;
+        })
+
+        return errorText;
+      }
+    },
     submit: function() {
-      console.log(this.email, "this is the email I saved");
+
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
+
+      
     },
     onChange: function(event) {
       this[event.target.name] = event.target.value;
