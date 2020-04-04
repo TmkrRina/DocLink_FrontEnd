@@ -4,7 +4,7 @@
       <Container>
         <div class="row">
           <div class="ten columns">
-            <form>
+            <form v-on:submit.prevent="submit">
               <div class="row">
                 <h2>Register as a Doctor</h2>
               </div>
@@ -96,6 +96,30 @@ export default {
   name: "DoctorRegister",
   props: {
     msg: String
+  },
+  data: function() {
+    return {
+      firstName: null,
+      lastName: null,
+      country: null,
+      state: null,
+      email: null,
+      password: null,
+      userRole: "ROLE_DOCTOR"
+    }
+  },
+  methods: {
+    submit: function() {
+      this.$store.commit('reigster', {
+        email: this.email,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        country: this.country,
+        state: this.state,
+        userRole: this.userRole
+      });
+    }
   }
 };
 </script>

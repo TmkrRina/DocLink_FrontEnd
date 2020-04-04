@@ -4,7 +4,8 @@
       <Container>
         <div class="row">
           <div class="ten columns">
-            <form>
+            <form v-on:submit.prevent="submit">
+              <input type="hidden" name="userRole" value="ROLE_DOCTOR" />
               <div class="row">
                 <h2>Register</h2>
               </div>
@@ -83,6 +84,21 @@ export default {
   name: "UserRegister",
   props: {
     msg: String
+  },
+  data: function() {
+    return {
+      firstName: null,
+      lastName: null,
+      country: null,
+      state: null,
+      email: null,
+      password: null,
+    }
+  },
+  methods: {
+    submit: function() {
+      
+    }
   }
 };
 </script>
