@@ -28,29 +28,32 @@ export default {
   data: function() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
     error: function() {
-      if(!this.error) return this.error;
-      if(Array.isArray(this.error)) {
+      if (!this.error) return this.error;
+      if (Array.isArray(this.error)) {
         const errorText = this.error.reduce((acc, item) => {
           acc += item;
           return acc;
-        })
+        });
 
         return errorText;
       }
     },
+    redirectToDash: function(path = "/dashboard") {
+      return this.$router.push({path});
+    },
     submit: function() {
-
       this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
+        credentials: {
+          email: this.email,
+          password: this.password
+        },
+        redirect: this.redirectToDash
       });
-
-      
     },
     onChange: function(event) {
       this[event.target.name] = event.target.value;

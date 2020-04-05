@@ -16,7 +16,7 @@ export default new Vuex.Store({
   mutations: {
     reLogin(state, userDetails) {
       state.auth.token = userDetails.token;
-      state.auth.loggedIn = true;
+      state.auth.loggedIn = !!userDetails.token;
       state.auth.user = JSON.parse(userDetails.user);
 
       console.log(state);
@@ -35,6 +35,8 @@ export default new Vuex.Store({
         token: null,
         user: null
       }
+
+      console.log(state, "From logout mutation");
     }
   },
   getters: {
@@ -50,11 +52,11 @@ export default new Vuex.Store({
       commit('reLogin', { token, user });
     },
 
-    async login({ commit }, credentials) {
-      console.log(credentials);
+    async login({ commit }, options) {
+
       await fetch(LOGIN_URL, {
         method: "POST",
-        body: JSON.stringify(credentials),
+        body: JSON.stringify(options.credentials),
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
@@ -62,8 +64,14 @@ export default new Vuex.Store({
       })
         .then(res => res.json())
         .then(res => {
+          console.log(res);
+          if(res.status && res.status != 200) {
+            commit('logout');
+            return options.redirect('/login');
+          }
+          console.log("Logging in", options);
           commit("login", res);
-          // context.$router.push("/dashboard");
+          return options.redirect();
         })
         .catch(() => {
           // console.log();

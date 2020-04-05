@@ -27,20 +27,21 @@ export default {
   props: ["appName"],
   data: function() {
     return {
-      // loggedIn: false
+      loggedIn: false
     }
   },
 
-  methods: {
-    loggedIn: function() {
-      return this.$store.getters.auth.loggedIn;
-    }
-  },
+  // computed: {
+  //   loggedIn: function() {
+  //     console.log(this.$store.getters.auth.loggedIn, "This is the thing that we need to do");
+  //     return this.$store.getters.auth.loggedIn;
+  //   }
+  // },
 
   watch: {
     loggedIn(newVal) {
-      console.log("State changed");
-      return newVal;
+      // console.log("State changed", newVal);
+      this.loggedIn = newVal;
     }
   },
 
