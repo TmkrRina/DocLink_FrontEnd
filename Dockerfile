@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn global add @vue/cli
+# RUN yarn global add @vue/cli
 
-RUN yarn install
+# RUN yarn install
 
-ENTRYPOINT [ "yarn", "build" ]
+# ENTRYPOINT [ "yarn", "build" ]

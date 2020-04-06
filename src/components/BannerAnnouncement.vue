@@ -45,7 +45,7 @@ export default {
       .then(res => {
         if (!res) return;
         console.log(res[0]);
-        context.banner = { ...res[0] };
+        context.banner = { ...res.reverse()[0] };
       })
       .catch(err => console.log(err));
   }
