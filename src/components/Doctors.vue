@@ -17,14 +17,14 @@
                   <td>Otto</td>
                   <td>Oncologist</td>
                   <td>@mdo</td>
-                  <button type="button" class="btn btn-primary btn-sm">Aprrove</button>
+                  <button type="button" class="btn btn-primary btn-sm">Approve</button>
                   </tr>
                 <tr>
                   <td>Jacob</td>
                   <td>Thornton</td>
                   <td>Thornton</td>
                   <td>@fat</td>
-                  <button type="button" class="btn btn-primary btn-sm">Aprrove</button>
+                  <button type="button" class="btn btn-primary btn-sm">Approve</button>
                 </tr>
                 <tr>
                   <td>Larry</td>
@@ -46,7 +46,7 @@
 import { mdbRow, mdbCol, mdbCard, mdbView, mdbCardBody} from 'mdbvue'
 
 export default {
-  name: 'Tables',
+  name: 'Doctors',
   components: {
     mdbRow,
     mdbCol,

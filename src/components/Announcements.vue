@@ -105,7 +105,65 @@
     <main>
       <div class="mt-5 p-5">
         <router-view></router-view>
+        <mdb-row>
+        <mdb-col md="8">
+        <h4> Announcements </h4>
+        </mdb-col>
+        <mdb-col md="4">
+          <button type="button" class="btn btn-info">Add Announcements</button>
+        </mdb-col>
         
+        </mdb-row>
+
+        <template>
+  <section id="posts">
+    <mdb-row>
+      <mdb-col md="8">
+        <div class="card">
+          
+          <h5 class="card-header">Corona Virus to kill more</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Dr.Klynn Joe</h7></b>
+            <p class="card-text"></p>
+            <a href="" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        </mdb-col>
+        </mdb-row>
+        <br> 
+      <mdb-row>
+      <mdb-col md="8">
+         <div class="card">
+          
+          <h5 class="card-header">Mental Health and therapies</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Dr. Alice Mayer</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        
+      </mdb-col>
+    </mdb-row>
+    <br> 
+    <mdb-row>
+      <mdb-col md="8">
+       <div class="card">
+          
+          <h5 class="card-header">Handwash to be taken seriously</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Lynn Morrisson</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+      </mdb-col>
+    </mdb-row>
+  </section>
+</template>
       </div>
       <!-- <ftr color="primary-color-dark" class="text-center font-small darken-2"> -->
         <!-- <div class="pt-4">
@@ -161,7 +219,7 @@ import {
 } from "mdbvue";
 
 export default {
-  name: "DashboardAdmin",
+  name: "Annoucements",
   components: {
     mdbNavbar,
     // mdbNavbarBrand,

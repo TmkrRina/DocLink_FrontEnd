@@ -531,9 +531,57 @@
         </mdb-col>
       </mdb-row>
     </section> -->
-<template>
-  <section id="dashboard"></section>
+
+    <template>
+  <section id="posts">
+    <mdb-row>
+      <mdb-col md="8">
+        <div class="card">
+          
+          <h5 class="card-header">Headache since 3 days</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Lynn Morrisson</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        </mdb-col>
+        </mdb-row>
+        <br> 
+      <mdb-row>
+      <mdb-col md="8">
+         <div class="card">
+          
+          <h5 class="card-header">Headache since 3 days</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Lynn Morrisson</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        
+      </mdb-col>
+    </mdb-row>
+    <br> 
+    <mdb-row>
+      <mdb-col md="8">
+       <div class="card">
+          
+          <h5 class="card-header">Headache since 3 days</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Lynn Morrisson</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+      </mdb-col>
+    </mdb-row>
+  </section>
 </template>
+  
 
 <script>
 import {
