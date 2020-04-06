@@ -29,22 +29,23 @@ export default {
     return {
       banner: {
         title: "Announcement Title",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       }
-    }
+    };
   },
   async mounted() {
     const context = this;
     await fetch(BANNER_ANNOUNCEMENTS, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       }
     })
       .then(res => res.json())
       .then(res => {
-        if(!res) return;
+        if (!res) return;
         console.log(res[0]);
-        context.banner = {...res[0]};
+        context.banner = { ...res[0] };
       })
       .catch(err => console.log(err));
   }
@@ -62,9 +63,13 @@ export default {
     box-sizing: border-box;
   }
 
-  .ba-header, .ba-excerpt {
+  .ba-header,
+  .ba-excerpt {
     color: white;
-    }
+  }
   
+  .ba-excerpt {
+    font-size: 20px;
+  }
 }
 </style>

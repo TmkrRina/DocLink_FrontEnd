@@ -34,7 +34,10 @@ export default {
   display: flex;
   align-items: center;
   position: relative;
-  /* background-image: "./assets/background.png"; */
+  background-image: url("../assets/homebanner.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .banner::before {
@@ -44,7 +47,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: #a98c6a; */
+  background-color: rgba(0,0,0,0.3);
   
 }
 </style>
