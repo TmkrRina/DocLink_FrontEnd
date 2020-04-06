@@ -1,175 +1,84 @@
 <template>
   <section id="profile">
+        <div class="row dl-row">
+      <div class="columns twelve">
+        <h4>Profile</h4>
+        <hr />
+      </div>
+    </div>
     <mdb-row>
       <mdb-col md="3">
         <mdb-card cascade narrow>
           <mdb-view>
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg" alt="Project" class="img-fluid"/>
-            <mdb-mask overlay="white-slight" waves/>
+            <img
+              src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg"
+              alt="Project"
+              class="img-fluid"
+            />
+            <mdb-mask overlay="white-slight" waves />
           </mdb-view>
           <mdb-card-body class="text-center">
             <mdb-card-title class="font-bold mb-2">
-              <strong>Alice Mayer</strong>
+              <strong>{{ fullName }}</strong>
             </mdb-card-title>
             <h5 class="indigo-text">
-              <strong>Psychologist </strong>
+              <strong>{{ profession }}</strong>
             </h5>
-          
           </mdb-card-body>
         </mdb-card>
       </mdb-col>
       <mdb-col md="5">
         <form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Firstname</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-    <label for="exampleFormControlInput1">Lastname</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-    <label for="exampleFormControlInput1">Age</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-    <label for="exampleFormControlInput1">Gender</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Male">
-    <label for="exampleFormControlInput1">Specialization</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-    <div class="form-group">
-    <label for="exampleFormControlTextarea1">Experience</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Country</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Nepal</option>
-      <option>USA</option>
-      <option>Ethiopia</option>
-      <option>Nigeria</option>
-      <option>Krosova</option>
-    </select>
-    <button type="button" class="btn btn-primary">Edit Details</button>
-  </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Firstname</label>
+            <input type="text" class="u-full-width" v-model="update.firstName" placeholder />
+            <label for="exampleFormControlInput1">Lastname</label>
+            <input type="text" class="u-full-width" v-model="update.lastName" id="exampleFormControlInput1" placeholder />
+            <label for="exampleFormControlInput1">Age</label>
+            <input type="text" class="u-full-width" v-model="update.age" placeholder />
+            <label for="exampleFormControlInput1">Gender</label>
+            <input
+              v-model="update.gender"
+              type="text"
+              class="u-full-width"
+            />
+            <label v-show="isDoctor">Specialization</label>
+            <input v-show="isDoctor" type="text" class="u-full-width" v-model="update.specialization" id="exampleFormControlInput1" placeholder />
+            <div class="form-group" v-show="isDoctor">
+              <label for="exampleFormControlTextarea1" v-show="isDoctor">Experience</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" v-model="update.experience" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <select class="u-full-width" v-model="update.country">
+              <option>Nepal</option>
+              <option>USA</option>
+              <option>Ethiopia</option>
+              <option>Nigeria</option>
+              <option>Krosova</option>
+            </select>
+            <button type="button" class="btn btn-primary">Edit Details</button>
+          </div>
         </form>
       </mdb-col>
-
-      <!-- <mdb-col md="9">
-        <section class="text-center pb-3">
-          <mdb-row class="d-flex justify-content-center"> --> 
-           <!-- <mdb-col lg="6" xl="5" class="mb-3">
-              <mdb-card cascade narrow class="d-flex mb-5">
-                <mdb-view>
-                  <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-profile-page.jpg" alt="Project" class="img-fluid"/>
-                  <mdb-mask overlay="white-slight" waves/>
-                </mdb-view>
-                <mdb-card-body>
-                  <mdb-card-title class="font-bold mb-3">
-                    <strong>Project name</strong>
-                  </mdb-card-title>
-                  <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-                </mdb-card-body>
-                <mdb-card-footer class="links-light profile-card-footer">
-                  <span cla ss="right">
-                    <a class="p-2" href="#profile">
-                      Live Preview
-                      <mdb-icon icon="photo" class="ml-1"/>
-                    </a>
-                  </span>
-                </mdb-card-footer>
-              </mdb-card>
-            </mdb-col> -->
-            <!-- <mdb-col lg="6" xl="5" class="mb-3">
-              <mdb-card cascade narrow class="d-flex mb-5">
-                <mdb-view>
-                  <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-signup.jpg" alt="Project" class="img-fluid"/>
-                  <mdb-mask overlay="white-slight" waves/>
-                </mdb-view>
-                <mdb-card-body>
-                  <mdb-card-title class="font-bold mb-3">
-                    <strong>Project name</strong>
-                  </mdb-card-title>
-                  <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-                </mdb-card-body>
-                <mdb-card-footer class="links-light profile-card-footer">
-                  <span class="right">
-                    <a class="p-2" href="#profile">
-                      Live Preview
-                      <mdb-icon icon="photo" class="ml-1"/>
-                    </a>
-                  </span>
-                </mdb-card-footer>
-              </mdb-card>
-            </mdb-col> -->
-          <!-- </mdb-row>
-          <mdb-row class="d-flex justify-content-center"> -->
-            <!-- <mdb-col lg="6" xl="5" class="mb-3"> -->
-              <!-- <mdb-card cascade narrow class="d-flex mb-5">
-                <mdb-view>
-                  <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-pricing.jpg" alt="Project" class="img-fluid"/>
-                  <mask overlay="white-slight" waves/>
-                </mdb-view>
-                <mdb-card-body>
-                  <mdb-card-title class="font-bold mb-3">
-                    <strong>Project name</strong>
-                  </mdb-card-title>
-                  <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-                </mdb-card-body>
-                <mdb-card-footer class="links-light profile-card-footer">
-                  <span class="right">
-                    <a class="p-2" href="#profile">
-                      Live Preview
-                      <mdb-icon icon="photo" class="ml-1"/>
-                    </a>
-                  </span>
-                </mdb-card-footer>
-              </mdb-card> -->
-            <!-- </mdb-col> -->
-            <!-- <mdb-col lg="6" xl="5" class="mb-3">
-              <mdb-card cascade narrow class="d-flex mb-5">
-                <mdb-view>
-                  <img src="https://mdbootstrap.com/img/Mockups/Horizontal/6-col/pro-landing.jpg" alt="Project" class="img-fluid"/>
-                  <mask overlay="white-slight" waves/>
-                </mdb-view>
-                <mdb-card-body>
-                  <mdb-card-title class="font-bold mb-3">
-                    <strong>Project name</strong>
-                  </mdb-card-title>
-                  <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-                </mdb-card-body>
-                <mdb-card-footer class="links-light profile-card-footer">
-                  <span class="right">
-                    <a class="p-2" href="#profile">
-                      Live Preview
-                      <mdb-icon icon="photo" class="ml-1"/>
-                    </a>
-                  </span>
-                </mdb-card-footer>
-              </mdb-card>
-            </mdb-col> -->
-            <!-- <mdb-col lg="12">
-              <div class="text-center">
-                <mdb-pagination circle color="blue">
-                  <mdb-page-item disabled>First</mdb-page-item>
-                  <mdb-page-nav prev></mdb-page-nav>
-                  <mdb-page-item active>1</mdb-page-item>
-                  <mdb-page-item>2</mdb-page-item>
-                  <mdb-page-item>3</mdb-page-item>
-                  <mdb-page-item>4</mdb-page-item>
-                  <mdb-page-item>5</mdb-page-item>
-                  <mdb-page-nav next></mdb-page-nav>
-                  <mdb-page-item disabled>Last</mdb-page-item>
-                </mdb-pagination>
-              </div>
-            </mdb-col> -->
-          <!-- </mdb-row>
-        </section> -->
-      <!-- </mdb-col> -->
     </mdb-row>
   </section>
 </template>
 
 <script>
-import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbView, mdbMask, mdbCardTitle} from 'mdbvue'
+import {
+  mdbRow,
+  mdbCol,
+  mdbCard,
+  mdbCardBody,
+  mdbView,
+  mdbMask,
+  mdbCardTitle
+} from "mdbvue";
 
 export default {
-  name: 'Profile',
+  name: "Profile",
   components: {
     mdbRow,
     mdbCol,
@@ -177,7 +86,7 @@ export default {
     mdbCardBody,
     mdbView,
     mdbMask,
-    mdbCardTitle,
+    mdbCardTitle
     // mdbCardText,
     // mdbCardFooter,
     // mdbIcon,
@@ -186,16 +95,37 @@ export default {
     // mdbPageNav,
     // mdbPageItem
   },
-  data () {
+  data() {
     return {
+    };
+  },
+  computed: {
+    update: function() {
+      return this.$store.getters.user;
+    },
+    profile: function() {
+      return this.$store.getters.user
+    },
+    fullName: function() {
+      const profile = this.profile;
+      return profile.firstName + " " + profile.lastName;
+    },
+    profession: function() {
+      const role = this.$store.getters.role;
+      if(role !== "ROLE_DOCTOR") return null;
+
+      return this.profile.specialization;
+    },
+    isDoctor: function() {
+      return this.$store.getters.role === "ROLE_DOCTOR"
     }
   }
-}
+};
 </script>
 
 <style scoped>
 .profile-card-footer {
-  background-color: #F7F7F7 !important;
+  background-color: #f7f7f7 !important;
   padding: 1.25rem;
 }
 .card.card-cascade .view {

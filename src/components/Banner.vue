@@ -2,7 +2,7 @@
   <VerticalHeight>
     <div class="banner">
       <Container>
-        <div class="row">
+        <div class="row dl-row">
           <div class="columns twelve">
             <BannerAnnouncement />
           </div>

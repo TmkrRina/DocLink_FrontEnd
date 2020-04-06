@@ -1,74 +1,74 @@
 <template>
   <section id="tables">
-    <mdb-row>
-      <mdb-col md="12">
-        <mdb-card cascade narrow class="mt-12">
-          <mdb-view class="gradient-card-header blue darken-2">
-            <h4 class="h4-responsive text-white"> Lists of Doctors</h4>
-          </mdb-view>
-          <mdb-card-body>
-            <table class="table table-striped">
-              <thead>
-                <tr><th>First Name</th><th>Last Name</th><th>Specialization</th><th>Email</th><th>Action</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>Oncologist</td>
-                  <td>@mdo</td>
-                  <button type="button" class="btn btn-primary btn-sm">Approve</button>
-                  </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <button type="button" class="btn btn-primary btn-sm">Approve</button>
-                </tr>
-                <tr>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                  <button type="button" class="btn btn-primary btn-sm">Aprrove</button>
-                </tr>
-              </tbody>
-            </table>
-          </mdb-card-body>
-        </mdb-card>
-      </mdb-col>
-    </mdb-row>
+    <div class="row dl-row">
+      <h4>Doctors</h4>
+    </div>
+    <hr />
+    <!-- <Container> -->
+    <div class="row dl-row">
+      <div class="columns twelve">
+        <div class="dl-doctors-list">
+          <table class="u-full-width">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Location</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dave Gamache</td>
+                <td>26</td>
+                <td>San Francisco</td>
+                <td>Male</td>
+                <td>
+                  <button class="button button-primary">Approve</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Dwayne Johnson</td>
+                <td>42</td>
+                <td>Male</td>
+                <td>Hayward</td>
+                <td>
+                  <button class="button button-primary">Approve</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- </Container> -->
   </section>
 </template>
 
 <script>
-import { mdbRow, mdbCol, mdbCard, mdbView, mdbCardBody} from 'mdbvue'
+// import Container from "./Container";
 
 export default {
-  name: 'Doctors',
-  components: {
-    mdbRow,
-    mdbCol,
-    mdbCard,
-    mdbView,
-    mdbCardBody,
-    
-  },
-  data () {
-    return {}
+  name: "Doctors",
+  components: {},
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.card.card-cascade .view.gradient-card-header {
-  padding: 1rem 1rem;
-  text-align: center;
-}
-.card.card-cascade h3,
-.card.card-cascade h4 {
-  margin-bottom: 0;
+<style scoped lang="scss">
+.dl-doctors-list {
+  padding: 20px;
+  background-color: white;
+
+  table {
+    td,
+    th {
+      font-size: 14px;
+    }
+  }
 }
 </style>

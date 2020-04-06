@@ -4,56 +4,43 @@
     <!--/.Navbar-->
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
-      <a class="logo-wrapper"><img alt="" class="img-fluid" src="../assets/Logo.png" /></a>
+      <a class="logo-wrapper">
+        <img alt class="img-fluid" src="../assets/Logo.png" />
+      </a>
       <mdb-list-group class="list-group-flush">
         <router-link to="/dashboard" @click.native="activeItem = 1">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 1 && 'active'"
-            ><mdb-icon
-              icon="chart-pie"
-              class="mr-3"
-            />Dashboard</mdb-list-group-item
-          >
-        </router-link>
-        <!-- <router-link to="/posts/" @click.native="activeItem = 2">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 2 && 'active'"
-            ><mdb-icon icon="map" class="mr-3" />Post</mdb-list-group-item>
-        </router-link> -->
-        <router-link to="/new-post" @click.native="activeItem = 3">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 3 && 'active'"
-            ><mdb-icon icon="map" class="mr-3" />New Post</mdb-list-group-item>
-        </router-link>
-        <router-link to="/profile" @click.native="activeItem = 4">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 4 && 'active'"
-            ><mdb-icon icon="user" class="mr-3" />Profile</mdb-list-group-item
-          >
-        </router-link>
-        <router-link to="/doctors" @click.native="activeItem = 5">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 5 && 'active'"
-            ><mdb-icon icon="table" class="mr-3" />Doctors</mdb-list-group-item
-          >
+          <mdb-list-group-item :action="true" :class="activeItem === 1 && 'active'">
+            <mdb-icon icon="chart-pie" class="mr-3" />Dashboard
+          </mdb-list-group-item>
         </router-link>
 
-        
-        <router-link to="/announcements" @click.native="activeItem = 5">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 5 && 'active'"
-            ><mdb-icon
-              icon="exclamation"
-              class="mr-3"
-            />Announcements</mdb-list-group-item
-          >
-        </router-link> 
+        <router-link to="/new-post" v-show="isPatient" @click.native="activeItem = 3">
+          <mdb-list-group-item :action="true" :class="activeItem === 3 && 'active'">
+            <mdb-icon icon="map" class="mr-3" />New Post
+          </mdb-list-group-item>
+        </router-link>
+        <router-link to="/profile" @click.native="activeItem = 4">
+          <mdb-list-group-item :action="true" :class="activeItem === 4 && 'active'">
+            <mdb-icon icon="user" class="mr-3" />Profile
+          </mdb-list-group-item>
+        </router-link>
+        <router-link to="/doctors" v-show="isAdmin" @click.native="activeItem = 5">
+          <mdb-list-group-item :action="true" :class="activeItem === 5 && 'active'">
+            <mdb-icon icon="table" class="mr-3" />Doctors
+          </mdb-list-group-item>
+        </router-link>
+
+        <router-link to="/announcements" @click.native="activeItem = 6">
+          <mdb-list-group-item :action="true" :class="activeItem === 6 && 'active'">
+            <mdb-icon icon="exclamation" class="mr-3" />Announcement
+          </mdb-list-group-item>
+        </router-link>
+
+        <router-link to="/new-banner" v-show="isAdmin" @click.native="activeItem = 6">
+          <mdb-list-group-item :action="true" :class="activeItem === 6 && 'active'">
+            <mdb-icon icon="exclamation" class="mr-3" />New Banner Announcement
+          </mdb-list-group-item>
+        </router-link>
       </mdb-list-group>
     </div>
     <!-- /Sidebar  -->
@@ -61,18 +48,12 @@
       <div class="p-5">
         <router-view></router-view>
       </div>
-
     </main>
   </div>
 </template>
 
 <script>
-import {
-  mdbIcon,
-  mdbListGroup,
-  mdbListGroupItem,
-  waves
-} from "mdbvue";
+import { mdbIcon, mdbListGroup, mdbListGroupItem, waves } from "mdbvue";
 
 export default {
   name: "DashboardAdmin",
@@ -87,10 +68,21 @@ export default {
     };
   },
   beforeMount() {
-    if(!this.$store.getters.loggedIn) return this.$router.push("/login");
+    if (!this.$store.getters.loggedIn) return this.$router.push("/login");
     this.activeItem = this.$route.matched[0].props.default.page;
   },
-  mixins: [waves]
+  mixins: [waves],
+  computed: {
+    isPatient: function() {
+      return this.$store.getters.role === "ROLE_PATIENT";
+    },
+    isDoctor: function() {
+      return this.$store.getters.role === "ROLE_DOCTOR"
+    },
+    isAdmin: function() {
+      return this.$store.getters.role === "ROLE_ADMIN"
+    }
+  }
 };
 </script>
 

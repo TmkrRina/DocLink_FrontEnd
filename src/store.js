@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { LOGIN_URL, HEALTH_ISSUES, ANNOUNCEMENTS, BANNER_ANNOUNCEMENTS } from './constants';
+import { LOGIN_URL, HEALTH_ISSUES, DOCTOR_HEALTH_ISSUES, BANNER_ANNOUNCEMENTS } from './constants';
 
 
 Vue.use(Vuex)
@@ -53,6 +53,9 @@ export default new Vuex.Store({
     },
     token: function(state) {
       return state.auth.token;
+    },
+    user: function(state) {
+      return state.auth.user;
     }
   },
   actions: {
@@ -95,7 +98,7 @@ export default new Vuex.Store({
       } else if (payload.role == "ROLE_PATIENT") {
         postUrl = HEALTH_ISSUES.replace("{id}", payload.id);
       } else if (payload.role == "ROLE_DOCTOR") {
-        postUrl = ANNOUNCEMENTS;
+        postUrl = DOCTOR_HEALTH_ISSUES;
       }
 
       console.log(postUrl, "This is the post url,,,, ");
