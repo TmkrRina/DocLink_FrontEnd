@@ -1,6 +1,55 @@
 <template>
   <div class="flexible-content">
     <!--Navbar-->
+    <mdb-navbar class="flexible-navbar white" light position="top" scrolling>
+      <!-- <mdb-navbar-brand href="https://mdbootstrap.com/docs/vue/" target="_blank"
+        >MDB</mdb-navbar-brand
+      >
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav left>
+          <mdb-nav-item to="/dashboard" waves-fixed active class="active"
+            >Home</mdb-nav-item
+          >
+          <mdb-nav-item
+            href="https://mdbootstrap.com/docs/vue/getting-started/quick-start/"
+            waves-fixed
+            >About MDB</mdb-nav-item
+          >
+          <mdb-nav-item
+            href="https://mdbootstrap.com/docs/vue/getting-started/download/"
+            waves-fixed
+            >Free download</mdb-nav-item
+          >
+          <mdb-nav-item
+            href="https://mdbootstrap.com/education/bootstrap/"
+            waves-fixed
+            >Free tutorials</mdb-nav-item
+          >
+        </mdb-navbar-nav>
+        <mdb-navbar-nav right>
+          <mdb-nav-item href="#!" waves-fixed
+            ><mdb-icon fab class="text-black" icon="facebook-square"
+          /></mdb-nav-item>
+          <mdb-nav-item href="#!" waves-fixed
+            ><mdb-icon fab icon="twitter"
+          /></mdb-nav-item>
+          <mdb-nav-item
+            href="https://github.com/mdbootstrap/bootstrap-material-design"
+            waves-fixed
+            class="border border-light rounded mr-1"
+            target="_blank"
+            ><mdb-icon fab icon="github" class="mr-2" />MDB GitHub
+          </mdb-nav-item>
+          <mdb-nav-item
+            href="https://mdbootstrap.com/products/vue-ui-kit/"
+            waves-fixed
+            class="border border-light rounded"
+            target="_blank"
+            ><mdb-icon icon="gem" far class="mr-2" />Go Pro
+          </mdb-nav-item>
+        </mdb-navbar-nav>
+      </mdb-navbar-toggler> -->
+    </mdb-navbar>
     <!--/.Navbar-->
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
@@ -56,7 +105,65 @@
     <main>
       <div class="mt-5 p-5">
         <router-view></router-view>
+        <mdb-row>
+        <mdb-col md="8">
+        <h4> Announcements </h4>
+        </mdb-col>
+        <mdb-col md="4">
+          <button type="button" class="btn btn-info">Add Announcements</button>
+        </mdb-col>
         
+        </mdb-row>
+
+        <template>
+  <section id="posts">
+    <mdb-row>
+      <mdb-col md="8">
+        <div class="card">
+          
+          <h5 class="card-header">Corona Virus to kill more</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Dr.Klynn Joe</h7></b>
+            <p class="card-text"></p>
+            <a href="" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        </mdb-col>
+        </mdb-row>
+        <br> 
+      <mdb-row>
+      <mdb-col md="8">
+         <div class="card">
+          
+          <h5 class="card-header">Mental Health and therapies</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Dr. Alice Mayer</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+        
+      </mdb-col>
+    </mdb-row>
+    <br> 
+    <mdb-row>
+      <mdb-col md="8">
+       <div class="card">
+          
+          <h5 class="card-header">Handwash to be taken seriously</h5>
+          <div class="card-body">
+            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head.</h6>
+            <b><h7 class="card-title">Lynn Morrisson</h7></b>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">View Post</a>
+          </div>
+        </div>
+      </mdb-col>
+    </mdb-row>
+  </section>
+</template>
       </div>
       <!-- <ftr color="primary-color-dark" class="text-center font-small darken-2"> -->
         <!-- <div class="pt-4">
@@ -98,18 +205,32 @@
 
 <script>
 import {
+  mdbNavbar,
+  // mdbNavbarBrand,
+  // mdbNavItem,
+  // mdbNavbarNav,
+  // mdbNavbarToggler,
+  // mdbBtn,
   mdbIcon,
   mdbListGroup,
   mdbListGroupItem,
+  // mdbFooter,
   waves
 } from "mdbvue";
 
 export default {
-  name: "DashboardAdmin",
+  name: "Annoucements",
   components: {
+    mdbNavbar,
+    // mdbNavbarBrand,
+    // mdbNavItem,
+    // mdbNavbarNav,
+    // mdbNavbarToggler,
+    // mdbBtn,
     mdbListGroup,
     mdbListGroupItem,
     mdbIcon,
+    // ftr: mdbFooter
   },
   data() {
     return {

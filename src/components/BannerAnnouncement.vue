@@ -40,5 +40,6 @@ export default {
   .ba-header, .ba-excerpt {
     color: white;
     }
+  
 }
 </style>
