@@ -36,8 +36,8 @@
           </mdb-list-group-item>
         </router-link>
 
-        <router-link to="/new-banner" v-show="isAdmin" @click.native="activeItem = 6">
-          <mdb-list-group-item :action="true" :class="activeItem === 6 && 'active'">
+        <router-link to="/new-banner" v-show="isAdmin" @click.native="activeItem = 7">
+          <mdb-list-group-item :action="true" :class="activeItem === 7 && 'active'">
             <mdb-icon icon="exclamation" class="mr-3" />New Banner Announcement
           </mdb-list-group-item>
         </router-link>

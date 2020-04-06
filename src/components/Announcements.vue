@@ -72,5 +72,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.card.dl-card {
+  .card-text {
+    font-size: 14px;
+  }
+}
+
+.dl-card-deck {
+  margin-bottom: 20px;
+}
 </style>
