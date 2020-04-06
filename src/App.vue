@@ -10,6 +10,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
 export default {
   name: "App",
   data: function() {
@@ -20,6 +21,9 @@ export default {
   components: {
     Header,
     Footer
+  },
+  beforeCreate: function() {
+    this.$store.dispatch('checkLogin');
   }
 };
 </script>

@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
-import UserRegister from './components/UserRegister.vue'
-import DoctorRegister from './components/DoctorRegister.vue'
+import UserRegister from './components/Form/UserRegister.vue'
+import DoctorRegister from './components/Form/DoctorRegister.vue'
 import DashboardAdmin from '@/components/DashboardAdmin'
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
@@ -20,7 +20,6 @@ const routes = [
     {path: '/doctor-register', component: DoctorRegister},
     {
       path: '/dashboard',
-      name: 'Dashboard',
       component: DashboardAdmin,
       props: { page: 1 },
       children: [
