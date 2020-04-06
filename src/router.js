@@ -11,6 +11,7 @@ import Profile from '@/components/Profile'
 import Doctors from '@/components/Doctors'
 import Post from '@/components/Post'
 import Announcements from '@/components/Announcements'
+import NewPost from './components/NewPost'
 
 const routes = [
     {path: '/', component: Home},
@@ -37,10 +38,16 @@ const routes = [
           component: Doctors
         },
         {
-          path: '/post',
+          path: '/posts/:id',
           name: 'Post',
           props: { page: 2},
           component: Post
+        },
+        {
+          path: '/new-post',
+          name: 'NewPost',
+          props: { page: 2},
+          component: NewPost
         },
       ]
     },

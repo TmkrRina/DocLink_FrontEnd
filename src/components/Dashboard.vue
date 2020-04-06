@@ -1,65 +1,69 @@
 
 <template>
   <section id="dashboard">
-    <h1>This is the thing that is going to happen</h1>
+    <!-- <Container> -->
+    <div class="row dl-row" v-for="(row, index) in posts" :key="index">
+      <!-- <div class="twelve columns"> -->
+        <div class="card-deck dl-card-deck four columns" v-for="post in row" :key="post.id">
+          <div class="card border-dark dl-card">
+            <div class="card-body">
+              <router-link :to="'/posts/' + post.id"> <h5 class="card-title">{{post.title}}</h5> </router-link>
+              <p class="card-text">{{post.description}}</p>
+            </div>
+            <div class="card-footer">
+              <span class="text-muted">{{(new Date(post.createDateTime)).toLocaleDateString()}}</span>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+    <!-- </Container> -->
   </section>
 </template>
   
 
 <script>
+// import Container from "./Container";
+import _ from "lodash";
 
 export default {
   name: "Dashboard",
-  components: {
-
+  components: {},
+  data: function() {
+    return {
+      posts: []
+    };
   },
-  data() {
-    return {}
+  computed: {
+    // posts: function() {
+    //   let result = _.chunk(posts, 3);
+    //   console.log(result);
+    //   return result;
+    // }
+  },
+  mounted() {
+    this.$store
+      .dispatch("fetchPosts", {
+        role: this.$store.getters.role,
+        id: this.$store.getters.userId
+      })
+      .then(result => this.posts = _.chunk(result, 3))
+      .catch(err => console.error(err));
   }
-      
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.cascading-admin-card {
-  margin: 20px 0;
-}
-.cascading-admin-card .admin-up {
-  margin-left: 4%;
-  margin-right: 4%;
-  margin-top: -20px;
-}
-.cascading-admin-card .admin-up .fas,
-.cascading-admin-card .admin-up .far {
-  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
-  padding: 1.7rem;
-  font-size: 2rem;
-  color: #fff;
-  text-align: left;
-  margin-right: 1rem;
-  border-radius: 3px;
-}
-.cascading-admin-card .admin-up .data {
-  float: right;
-  margin-top: 2rem;
-  text-align: right;
-}
-.admin-up .data p {
-  color: #999999;
-  font-size: 12px;
-}
-.classic-admin-card .card-body {
-  color: #fff;
-  margin-bottom: 0;
-  padding: 0.9rem;
-}
-.classic-admin-card .card-body p {
-  font-size: 13px;
-  opacity: 0.7;
-  margin-bottom: 0;
-}
-.classic-admin-card .card-body h4 {
-  margin-top: 10px;
-}
+<style scoped lang="scss">
+  .card.dl-card {
+    .card-text {
+      font-size: 14px;
+    }
+  }
+
+
+  .dl-card-deck {
+    margin-bottom: 20px;
+  }
+
 </style>

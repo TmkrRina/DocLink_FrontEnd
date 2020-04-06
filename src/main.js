@@ -11,13 +11,6 @@ import './assets/css/skeleton.css'
 
 import './assets/scss/app.scss';
 
-import * as VueGoogleMaps from 'vue2-google-maps'
-
-Vue.use(VueGoogleMaps, {
-  load: {
-    libraries: 'places'
-  }
-})
 
 Vue.config.productionTip = false
 

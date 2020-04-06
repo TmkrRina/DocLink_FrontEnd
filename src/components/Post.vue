@@ -1,59 +1,113 @@
 <template>
   <section id="posts">
-    <mdb-row>
-      <mdb-col md="8">
-        <div class="card">
-          
-          <h5 class="card-header">Headache since 3 days</h5>
-          <div class="card-body">
-            <h6 class="card-title">I am having headchae since  along time now. It hurts in the left side of my head. I have taken few painkillers but it doesnt seem to work. It only helps for a while. Its just a flu? I am in New Jersey at the moment and have been travelling foe a while.</h6>
-            <b><h7 class="card-title">Lynn Morrisson</h7></b>
-            <p class="card-text"></p>
-            <!-- <a href="#" class="btn btn-primary">View Post</a> -->
+    <Container>
+      <div class="row dl-row">
+        <div class="twelve columns">
+          <h1>{{ post.title }}</h1>
+          <div class="post">
+            <p class="post-description">{{post.description}}</p>
           </div>
-          <mdb-col md="8">
-          <form>
-          <div class="form-group">
-              <label for="exampleFormControlTextarea1">Comment Here</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div> 
-          </form>
-          </mdb-col>
         </div>
-        </mdb-col>
-        </mdb-row>
-        
-      
-      
+      </div>
+      <div class="row dl-row">
+        <div class="six columns">
+          <div class="comments">
+            <div class="comment-form">
+              <form v-on:submit.prevent="submitComment">
+                <div class="row dl-row">
+                  <div class="columns twelve">
+                    <textarea v-model="comment.description" class="u-full-width"></textarea>
+                  </div>
+                </div>
+                <div class="row dl-row">
+                  <div class="columns ten">
+                    <button class="button button-primary">Comment</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row dl-row">
+        <div class="ten columns">
+          <h3>Comments</h3>
+
+          <div class="card" v-for="(comment, index) in demoComments" :key="index">
+            <div class="card-body">
+              <p style="font-size: 14px" class="card-text">{{ comment.description }}</p>
+              by <a href="#" class="card-link" style="color: black">{{ comment.user.firstName + " " + comment.user.lastName }}</a>  -
+              <a href="#" class="card-link" style="color: black">{{ (new Date()).toLocaleString() }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
   </section>
 </template>
 
 <script>
-import { mdbRow, mdbCol} from 'mdbvue'
-
+import Container from "./Container";
+import { VIEW_HEALTH_ISSUES } from "../constants";
 export default {
-  name: 'Post',
+  name: "Post",
   components: {
-    mdbRow,
-    mdbCol,
-    // mdbCard,
-    // mdbView,
-    // mdbCardBody
+    Container
   },
-  data () {
+  data() {
     return {
+      post: {},
+      demoComments: [
+        {
+          description: "has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydne",
+          user: { firstName: "John", lastName: "Doe" }
+        }
+      ],
+      comment: {
+        description: ""
+      }
+    };
+  },
+  methods: {
+    submitComment: function() {
+      const payload = { description: this.comment.description };
+      console.log(payload);
+      // const userId = this.$store.getters.userId;
+      // const token = this.$store.getters.token;
+
+      // const url = `/api/users/${userId}/`;
     }
+  },
+  mounted() {
+    const url = VIEW_HEALTH_ISSUES.replace(
+      "{id}",
+      this.$store.getters.userId
+    ).replace("{healthIssueId}", this.$router.currentRoute.params.id);
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${this.$store.getters.token}`,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.post = res;
+      })
+      .catch(err => console.error(err));
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.card.card-cascade .view.gradient-card-header {
-  padding: 1rem 1rem;
-  text-align: center;
-}
-.card.card-cascade h3, .card.card-cascade h4 {
-  margin-bottom: 0px;
+<style scoped lang="scss">
+.post {
+  background-color: white;
+  padding: 20px;
+
+  .post-description {
+    font-size: 16px;
+  }
+
+  margin-bottom: 20px;
 }
 </style>

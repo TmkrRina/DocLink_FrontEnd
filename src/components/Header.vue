@@ -33,19 +33,18 @@ export default {
 
   methods: {
     loggedIn: function() {
-      return this.$store.getters.auth.loggedIn;
+      return this.$store.getters.loggedIn;
     }
   },
 
   watch: {
     loggedIn(newVal) {
-      console.log("State changed");
       return newVal;
     }
   },
 
   beforeMount: function() {
-    this.loggedIn = this.$store.state.auth.loggedIn;
+    this.loggedIn = this.$store.getters.loggedIn;
   },
 
 

@@ -6,9 +6,11 @@
 export default {
     name: "Logout",
     methods: {
+        redirect: function(path = '/login') {
+            this.$router.push(path);
+        },
         logout: function() {
-            this.$store.dispatch('logout');
-            // this.$router.push("/");
+            this.$store.dispatch('logout', { redirect: this.redirect });
         }
     }
 }

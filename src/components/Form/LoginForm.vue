@@ -1,13 +1,13 @@
 <template>
   <form v-on:submit.prevent="submit">
     <h1 class="login-title">Login</h1>
-    <div class="row">
+    <div class="row dl-row">
       <div class="six columns">
         <label for="email">Email</label>
         <TextInput required name="email" v-bind:email="email" v-bind:onChange="onChange" />
       </div>
     </div>
-    <div class="row">
+    <div class="row dl-row">
       <div class="six columns">
         <label for="password">Password</label>
         <PasswordInput name="password" v-bind:password="password" v-bind:onChange="onChange" />
@@ -28,29 +28,32 @@ export default {
   data: function() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
     error: function() {
-      if(!this.error) return this.error;
-      if(Array.isArray(this.error)) {
+      if (!this.error) return this.error;
+      if (Array.isArray(this.error)) {
         const errorText = this.error.reduce((acc, item) => {
           acc += item;
           return acc;
-        })
+        });
 
         return errorText;
       }
     },
+    redirect: function(path = "/dashboard") {
+      return this.$router.push(path);
+    },
     submit: function() {
-
       this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
+        credentials: {
+          email: this.email,
+          password: this.password
+        },
+        redirect: this.redirect
       });
-
-      
     },
     onChange: function(event) {
       this[event.target.name] = event.target.value;

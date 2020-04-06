@@ -4,9 +4,7 @@
     <!--/.Navbar-->
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
-      <a class="logo-wrapper"
-        ><img alt="" class="img-fluid" src="../assets/Logo.png"
-      /></a>
+      <a class="logo-wrapper"><img alt="" class="img-fluid" src="../assets/Logo.png" /></a>
       <mdb-list-group class="list-group-flush">
         <router-link to="/dashboard" @click.native="activeItem = 1">
           <mdb-list-group-item
@@ -18,23 +16,29 @@
             />Dashboard</mdb-list-group-item
           >
         </router-link>
-        <router-link to="/post" @click.native="activeItem = 4">
-          <mdb-list-group-item
-            :action="true"
-            :class="activeItem === 4 && 'active'"
-            ><mdb-icon icon="map" class="mr-3" />Post</mdb-list-group-item>
-        </router-link>
-        <router-link to="/profile" @click.native="activeItem = 2">
+        <!-- <router-link to="/posts/" @click.native="activeItem = 2">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 2 && 'active'"
-            ><mdb-icon icon="user" class="mr-3" />Profile</mdb-list-group-item
-          >
-        </router-link>
-        <router-link to="/doctors" @click.native="activeItem = 3">
+            ><mdb-icon icon="map" class="mr-3" />Post</mdb-list-group-item>
+        </router-link> -->
+        <router-link to="/new-post" @click.native="activeItem = 3">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 3 && 'active'"
+            ><mdb-icon icon="map" class="mr-3" />New Post</mdb-list-group-item>
+        </router-link>
+        <router-link to="/profile" @click.native="activeItem = 4">
+          <mdb-list-group-item
+            :action="true"
+            :class="activeItem === 4 && 'active'"
+            ><mdb-icon icon="user" class="mr-3" />Profile</mdb-list-group-item
+          >
+        </router-link>
+        <router-link to="/doctors" @click.native="activeItem = 5">
+          <mdb-list-group-item
+            :action="true"
+            :class="activeItem === 5 && 'active'"
             ><mdb-icon icon="table" class="mr-3" />Doctors</mdb-list-group-item
           >
         </router-link>
@@ -54,44 +58,10 @@
     </div>
     <!-- /Sidebar  -->
     <main>
-      <div class="mt-5 p-5">
+      <div class="p-5">
         <router-view></router-view>
-        
       </div>
-      <!-- <ftr color="primary-color-dark" class="text-center font-small darken-2"> -->
-        <!-- <div class="pt-4">
-          <mdb-btn
-            outline="white"
-            tag="a"
-            href="https://mdbootstrap.com/docs/vue/getting-started/download/"
-            target="_blank"
-            >Download MDB <mdb-icon icon="download" class="ml-2"
-          /></mdb-btn>
-          <mdb-btn
-            outline="white"
-            tag="a"
-            href="https://mdbootstrap.com/education/bootstrap/"
-            target="_blank"
-            >Start free tutorial <mdb-icon icon="graduation-cap" class="ml-2"
-          /></mdb-btn>
-        </div> -->
-        <!-- <hr class="my4" /> -->
-        <!-- <div class="pb-4">
-          <a href="#"><mdb-icon fab icon="facebook-square" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="twitter" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="youtube" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="google-plus" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="dribbble" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="pinterest" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="github" class="mr-3"/></a>
-          <a href="#"><mdb-icon fab icon="codepen" class="mr-3"/></a>
-        </div> -->
-        
-        <!-- <p class="footer-copyright mb-0 py-3 text-center">
-          &copy; {{ new Date().getFullYear() }} Copyright:
-          <a href="https://mdbootstrap.com/docs/vue/"> MDBootstrap.com </a>
-        </p> -->
-      <!-- </ftr> -->
+
     </main>
   </div>
 </template>
@@ -109,7 +79,7 @@ export default {
   components: {
     mdbListGroup,
     mdbListGroupItem,
-    mdbIcon,
+    mdbIcon
   },
   data() {
     return {
@@ -117,6 +87,7 @@ export default {
     };
   },
   beforeMount() {
+    if(!this.$store.getters.loggedIn) return this.$router.push("/login");
     this.activeItem = this.$route.matched[0].props.default.page;
   },
   mixins: [waves]

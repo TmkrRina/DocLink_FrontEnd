@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { LOGIN_URL } from './constants';
+import { LOGIN_URL, HEALTH_ISSUES, ANNOUNCEMENTS, BANNER_ANNOUNCEMENTS } from './constants';
 
 
 Vue.use(Vuex)
@@ -11,12 +11,13 @@ export default new Vuex.Store({
       loggedIn: false,
       token: null,
       user: null
-    }
+    },
+    status: "loaded"
   },
   mutations: {
     reLogin(state, userDetails) {
       state.auth.token = userDetails.token;
-      state.auth.loggedIn = true;
+      state.auth.loggedIn = !!userDetails.token;
       state.auth.user = JSON.parse(userDetails.user);
 
       console.log(state);
@@ -35,11 +36,23 @@ export default new Vuex.Store({
         token: null,
         user: null
       }
+    },
+    loading: function (state) {
+      state.status = "loading";
     }
   },
   getters: {
-    auth: function (state) {
+    loggedIn: function (state) {
       return state.auth.loggedIn;
+    },
+    role: function(state) {
+      return state.auth.user.authorities[0].authority;
+    },
+    userId: function(state) {
+      return state.auth.user.id;
+    },
+    token: function(state) {
+      return state.auth.token;
     }
   },
   actions: {
@@ -50,11 +63,10 @@ export default new Vuex.Store({
       commit('reLogin', { token, user });
     },
 
-    async login({ commit }, credentials) {
-      console.log(credentials);
-      await fetch(LOGIN_URL, {
+    async login({ commit }, payload) {
+      return await fetch(LOGIN_URL, {
         method: "POST",
-        body: JSON.stringify(credentials),
+        body: JSON.stringify(payload.credentials),
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
@@ -63,16 +75,35 @@ export default new Vuex.Store({
         .then(res => res.json())
         .then(res => {
           commit("login", res);
-          // context.$router.push("/dashboard");
+          window.location.reload();
+          return payload.redirect();
         })
         .catch(() => {
-          // console.log();
-          // context.error = res.subErrors;
+          return payload.redirect({ path: "/login", query: { error: true } });
         });
     },
-
-    logout({commit}) {
+    logout({ commit }, payload) {
       commit('logout');
+      window.location.reload();
+      payload.redirect();
+    },
+
+    async fetchPosts({ commit }, payload) {
+      let postUrl;
+      if (payload.role == "ROLE_ADMIN") {
+        postUrl = BANNER_ANNOUNCEMENTS;
+      } else if (payload.role == "ROLE_PATIENT") {
+        postUrl = HEALTH_ISSUES.replace("{id}", payload.id);
+      } else if (payload.role == "ROLE_DOCTOR") {
+        postUrl = ANNOUNCEMENTS;
+      }
+
+      console.log(postUrl, "This is the post url,,,, ");
+      commit("loading");
+      return fetch(postUrl, { headers: { "Authorization": `Bearer ${this.state.auth.token}` } })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(err => console.error(err))
     }
   }
 })

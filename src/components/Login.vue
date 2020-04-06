@@ -2,7 +2,7 @@
   <VerticalHeight>
     <div class="login">
       <Container>
-        <div class="row">
+        <div class="row doclink-row">
           <div class="ten columns">
             <div class="login-form-wrapper">
               <LoginForm />
@@ -24,29 +24,30 @@ export default {
   props: {
     msg: String
   },
-  components: { Container, VerticalHeight, LoginForm }
+  components: { Container, VerticalHeight, LoginForm },
+  beforeMount() {
+    if (this.$store.getters.loggedIn) return this.$router.push("/");
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .login {
   display: flex;
-  // padding-top: 100px;
   box-sizing: border-box;
-  // background-color: rgba(0,0,0,0.5);
   background-color: #e1e9eb;
   height: 100%;
   align-items: center;
   position: relative;
 
   &:before {
-    position:absolute;
+    position: absolute;
     content: "";
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }
 </style>
