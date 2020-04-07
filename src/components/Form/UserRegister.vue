@@ -140,6 +140,10 @@ export default {
   height: 100%;
   align-items: center;
   position: relative;
+      background-image: url("../../assets/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 
   &:before {
     position: absolute;

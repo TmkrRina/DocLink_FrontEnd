@@ -48,6 +48,10 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+    background-image: url("../assets/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
   }
 }
 </style>

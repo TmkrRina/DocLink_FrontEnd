@@ -3,10 +3,12 @@
     <Container>
       <div class="row">
         <div class="columns two">
-          <router-link to="/" class="nav-link button logo">{{appName}}</router-link>
+          <router-link to="/" class="logo">
+            <img style="width: 90px" src="../assets/Logo.png" v-bind:alt="appName" />
+          </router-link>
         </div>
         <div class="columns ten">
-          <div class="nav-links dock-right">
+          <div class="nav-links dock-right" style="height: 100%">
             <router-link v-show="!loggedIn" to="/login" class="nav-link button">Login</router-link>
             <router-link v-show="!loggedIn" to="/register" class="nav-link button">Register</router-link>
             <router-link v-show="loggedIn" to="/dashboard" class="nav-link button">Dashboard</router-link>

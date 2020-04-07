@@ -153,7 +153,7 @@ export default {
   display: flex;
 
   box-sizing: border-box;
-  // background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.5);
   background-color: #e1e9eb;
   height: 100vh;
   align-items: center;
@@ -169,5 +169,10 @@ export default {
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
   }
+
+      background-image: url("../../assets/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 </style>
